@@ -71,10 +71,13 @@
 
 	<!-- startup action - load the first scene -->
 	<action name="startup" autorun="onstart">
+		skin_hideskin(instant);
 		if(startscene === null OR !scene[get(startscene)], copy(startscene,scene[0].name); );
 		loadscene(get(startscene), null, MERGE);
 		if(startactions !== null, startactions() );
 	</action>
+	
+<layer name="enable_vr" url="icon_vr.png" keep="true" handcursor="false" capture="false" align="rightbottom" onclick="webvr.toggleVR()"/>
 
 <layer name="map" url="minimap1.png" keep="true" handcursor="false" capture="false" align="leftbottom" scale="0.25" scalechildren="true" />
 <layer name="map2" url="minimap2.png" keep="true" handcursor="false" capture="false" align="leftbottom" scale="0.25" scalechildren="true" visible="false"/>
@@ -110,7 +113,7 @@
 	
 		<action name="update">
 			set(layer[radar].parent, spot1); set(layer[radar].heading, -90);
-			set(layer[map].visible,"true"); set(layer[map2].visible,"false");
+			if(webvr.isenabled == false,set(layer[map].visible,"true"); set(layer[map2].visible,"false"););
 		</action>		
 
 		<view hlookat="135.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
@@ -129,7 +132,7 @@
 	
 		<action name="update">
 			set(layer[radar].parent, spot2); set(layer[radar].heading, -90);
-			set(layer[map].visible,"true"); set(layer[map2].visible,"false");
+			if(webvr.isenabled == false,set(layer[map].visible,"true"); set(layer[map2].visible,"false"););
 		</action>
 
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
@@ -149,7 +152,7 @@
 	
 		<action name="update">
 			set(layer[radar].parent, spot3); set(layer[radar].heading, -90);
-			set(layer[map].visible,"true"); set(layer[map2].visible,"false");
+			if(webvr.isenabled == false,set(layer[map].visible,"true"); set(layer[map2].visible,"false"););
 		</action>
 
 		<view hlookat="38.334" vlookat="12.525" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
@@ -170,7 +173,7 @@
 	
 		<action name="update">
 			set(layer[radar].parent, spot4); set(layer[radar].heading, -90);
-			set(layer[map].visible,"true"); set(layer[map2].visible,"false");
+			if(webvr.isenabled == false,set(layer[map].visible,"true"); set(layer[map2].visible,"false"););
 		</action>
 
 		<view hlookat="-34.000" vlookat="3.840" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
@@ -190,7 +193,7 @@
 	
 		<action name="update">
 			set(layer[radar].parent, spot5); set(layer[radar].heading, -90);
-			set(layer[map].visible,"true"); set(layer[map2].visible,"false");
+			if(webvr.isenabled == false,set(layer[map].visible,"true"); set(layer[map2].visible,"false"););
 		</action>
 
 		<view hlookat="-160.014" vlookat="12.437" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
@@ -210,7 +213,7 @@
 	
 		<action name="update">
 			set(layer[radar].parent, spot6); set(layer[radar].heading, -90);
-			set(layer[map].visible,"true"); set(layer[map2].visible,"false");
+			if(webvr.isenabled == false,set(layer[map].visible,"true"); set(layer[map2].visible,"false"););
 		</action>
 
 		<view hlookat="-37.912" vlookat="10.508" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
@@ -232,7 +235,7 @@
 	
 		<action name="update">
 			set(layer[radar].parent, spot7); set(layer[radar].heading, -90);
-			set(layer[map].visible,"false"); set(layer[map2].visible,"true");
+			if(webvr.isenabled == false,set(layer[map].visible,"false"); set(layer[map2].visible,"true"););
 		</action>
 
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
@@ -254,7 +257,7 @@
 		
 		<action name="update">
 			set(layer[radar].parent, spot8); set(layer[radar].heading, -90);
-			set(layer[map].visible,"false"); set(layer[map2].visible,"true");
+			if(webvr.isenabled == false,set(layer[map].visible,"false"); set(layer[map2].visible,"true"););
 		</action>
 		
 		<view hlookat="247.671" vlookat="11.228" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
@@ -273,7 +276,7 @@
 
 		<action name="update">
 			set(layer[radar].parent, spot9); set(layer[radar].heading, -90);
-			set(layer[map].visible,"false"); set(layer[map2].visible,"true");
+			if(webvr.isenabled == false,set(layer[map].visible,"false"); set(layer[map2].visible,"true"););
 		</action>
 
 		<view hlookat="-89.134" vlookat="10.391" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
@@ -292,7 +295,7 @@
 		
 		<action name="update">
 			set(layer[radar].parent, spot10); set(layer[radar].heading, -90);
-			set(layer[map].visible,"false"); set(layer[map2].visible,"true");
+			if(webvr.isenabled == false,set(layer[map].visible,"false"); set(layer[map2].visible,"true"););
 		</action>
 		
 		<view hlookat="-45.181" vlookat="7.382" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
@@ -311,7 +314,7 @@
 		
 		<action name="update">
 			set(layer[radar].parent, spot11); set(layer[radar].heading, -90);
-			set(layer[map].visible,"false"); set(layer[map2].visible,"true");
+			if(webvr.isenabled == false,set(layer[map].visible,"false"); set(layer[map2].visible,"true"););
 		</action>
 
 		<view hlookat="-24.218" vlookat="17.424" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
